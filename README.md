@@ -18,10 +18,10 @@ wsdl: {url}/wsdlfile
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
    <soapenv:Header/>
    <soapenv:Body>
-   	<CoursesBuyRequest>
+   	<CoursesAddRequest>
          <courseId>0</courseId>
          <studentId>1</studentId>
-      </CoursesBuyRequest>
+      </CoursesAddRequest>
    </soapenv:Body>
 </soapenv:Envelope>
 ```

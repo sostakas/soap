@@ -35,7 +35,7 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="CoursesBuyRequest">
+            <xs:element name="CoursesAddRequest">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="1" maxOccurs="1" name="studentId" type="xs:integer"/>
@@ -59,7 +59,7 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="BuyResp">
+            <xs:element name="AddResp">
                 <xs:complexType>
                 <xs:sequence>
                     <xs:element minOccurs="1" maxOccurs="unbounded" name="result" type="xs:string"/>
@@ -88,12 +88,12 @@
         <wsdl:part name="parameters" element="tns:CourseArray"/>
     </wsdl:message>
 
-    <wsdl:message name="CoursesBuyRequest">
-        <wsdl:part name="parameters" element="tns:CoursesBuyRequest"/>
+    <wsdl:message name="CoursesAddRequest">
+        <wsdl:part name="parameters" element="tns:CoursesAddRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="CoursesBuyResponse">
-        <wsdl:part name="parameters" element="tns:BuyResp"/>
+    <wsdl:message name="CoursesAddResponse">
+        <wsdl:part name="parameters" element="tns:AddResp"/>
     </wsdl:message>
 
     <wsdl:portType name="CommunicatorPort">
@@ -109,9 +109,9 @@
             <wsdl:input message="tns:CoursesRequest" />
             <wsdl:output message="tns:CoursesResponse" />
         </wsdl:operation>
-        <wsdl:operation name="buyCourses">
-            <wsdl:input message="tns:CoursesBuyRequest" />
-            <wsdl:output message="tns:CoursesBuyResponse" />
+        <wsdl:operation name="addCourses">
+            <wsdl:input message="tns:CoursesAddRequest" />
+            <wsdl:output message="tns:CoursesAddResponse" />
         </wsdl:operation>
     </wsdl:portType>
 
@@ -126,8 +126,8 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="buyCourses">
-            <soap:operation soapAction="buyCourses" style="document"/>
+        <wsdl:operation name="addCourses">
+            <soap:operation soapAction="addCourses" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>

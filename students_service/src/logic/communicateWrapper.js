@@ -8,7 +8,7 @@ class CommunicateWrapper {
     getCourses() {
         return communicator.getCourses();
     }
-    buyCourse(courseId, studentId) {
+    addCourse(courseId, studentId) {
         return Promise.try(async function() {
             console.log('inside try')
             const student = dataStorage.get(studentId);
@@ -19,7 +19,7 @@ class CommunicateWrapper {
     
             if (student.balance <= course.price) throw new Error("student does not have enough balance.");
             console.log('asdasd')
-            const boughtCourse = await communicator.buyCourse(courseId);
+            const boughtCourse = await communicator.addCourse(courseId);
             console.log('after bought course')
             dataStorage.update(studentId, {
                 courses: [boughtCourse]

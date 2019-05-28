@@ -30,9 +30,9 @@ function soapRouter(app) {
                         }
                     });
                 },
-                buyCourses: function(args, cb) {
+                addCourses: function(args, cb) {
                     const { courseId, studentId } = args;
-                    return commWrapper.buyCourse(courseId, studentId)
+                    return commWrapper.addCourse(courseId, studentId)
                     .then(() => {
                         cb({result: `student ${studentId} bought course ${courseId} successfully` })
                     })

@@ -40,8 +40,8 @@ class Communicator {
 			});
 	}
 
-	buyCourse(id) {
-		console.log("buyCourse()");
+	addCourse(id) {
+		console.log("addCourse()");
 		return Promise.try(() => {
 			return req({
 				uri: `http://courses:3001/shop/${id}`,
