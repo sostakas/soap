@@ -1,0 +1,10 @@
+version: "3"
+services:
+  courses:
+    build: ./courses_service
+    ports:
+      - "8000:3001"
+  students:
+    build: ./students_service
+    ports:
+      - "80:3000"
