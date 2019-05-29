@@ -76,5 +76,6 @@ module.exports = {
 	update,
 	del,
 	studentPropExistValidator,
-	studentPropTypeValidator,student
+	studentPropTypeValidator,
+	student
 };

@@ -26,12 +26,6 @@ class CommunicateWrapper {
         })
     } 
 
-    addCourse2(courseId, studentId) {
-        return Promise.try(async function() {
-            // add to courses
-        })
-    } 
-
     addStudent(studentId, name, surname, uni, courses ) {
         return Promise.try(async function() {
             // add to students
