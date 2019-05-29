@@ -34,3 +34,8 @@ wsdl: {url}/wsdlfile
    </soapenv:Body>
 </soapenv:Envelope>
 ```
+
+***add course**
+```
+
+```

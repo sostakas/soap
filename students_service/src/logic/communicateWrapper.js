@@ -11,8 +11,14 @@ class CommunicateWrapper {
     addCourse(courseId, name, price) {
         return Promise.try(async function() {
 
-            const student = dataStorage.set();
-            
+            let key = dataStorage.set(null, req.body);
+        })
+    } 
+
+    addStudent(studentId) {
+        return Promise.try(async function() {
+
+            let key = dataStorage.set(null, req.body);
         })
     } 
     getStudents() {

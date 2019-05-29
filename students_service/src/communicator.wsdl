@@ -149,6 +149,11 @@
             <wsdl:input message="tns:CourseAddRequest" />
             <wsdl:output message="tns:CourseAddResponse" />
         </wsdl:operation>
+
+        <wsdl:operation name="addStudent">
+            <wsdl:input message="tns:StudentAddRequest" />
+            <wsdl:output message="tns:StudentAddResponse" />
+        </wsdl:operation>
     </wsdl:portType>
 
     <wsdl:binding name="CommunicatorBinding" type="tns:CommunicatorPort">
@@ -156,6 +161,16 @@
         
         <wsdl:operation name="addCourse">
             <soap:operation soapAction="addCourse" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="addStudent">
+            <soap:operation soapAction="addStudent" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -176,6 +191,16 @@
 
         <wsdl:operation name="addCourse">
             <soap:operation soapAction="addCourse" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="addStudent">
+            <soap:operation soapAction="addStudent" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
