@@ -32,9 +32,12 @@ class CommunicateWrapper {
         })
     } 
 
-    addStudent(courseId, studentId) {
+    addStudent(studentId, name, surname, uni, courses ) {
         return Promise.try(async function() {
             // add to students
+            const data = { first_name: name, last_name: surname, university: uni, courses: [{id: 1}] };
+            console.log(data)
+            dataStorage.student(studentId, data)
         })
     } 
     getStudents() {

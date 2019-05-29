@@ -25,6 +25,21 @@ function set(key, val) {
 	data[key] = val;
 	return key;
 }
+
+function student(key, val) {
+	if (!key) {
+		keys = _.orderBy(Object.keys(data), "asc");
+		key = Number(keys[keys.length - 1]) + 1;
+	}
+
+	if (data[key]) throw new Error("student already exists!");
+	console.log(val)
+
+	data[key] = val;
+
+	return key;
+}
+
 function get(key) {
 	return data[key];
 }
@@ -48,6 +63,7 @@ function update(key, newInfo) {
 	data[key] = newStudent;
 	return newStudent;
 }
+
 function del(key) {
 	if (!data[key]) throw new Error("student does not exist!");
 	delete data[key];
@@ -60,5 +76,5 @@ module.exports = {
 	update,
 	del,
 	studentPropExistValidator,
-	studentPropTypeValidator
+	studentPropTypeValidator,student
 };

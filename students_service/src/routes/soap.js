@@ -72,8 +72,8 @@ function soapRouter(app) {
                 },
 
                 addStudent: function(args, cb) {
-                    const { courseId, studentId } = args;
-                    return commWrapper.addStudent(studentId, 1)
+                    const { studentId, first_name, last_name, university, courses } = args;
+                    return commWrapper.addStudent(studentId, first_name, last_name, university, courses )
                     .then(() => {
                         cb({result: `student ${studentId}successfully` })
                     })
