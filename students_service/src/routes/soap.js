@@ -47,11 +47,9 @@ function soapRouter(app) {
                     });
                 },
                 getStudents: function(args, cb) {
-                    console.log('getStudent()')
                     return commWrapper.getStudents()
                 },
                 getStudent: function(args, cb) {
-                    console.log('getStudent()')
                     const {studentId} = args
                     return commWrapper.getStudent(studentId);
                 }
