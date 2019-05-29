@@ -7,17 +7,27 @@
         <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
             <xs:element name="CoursesRequest">
             </xs:element>
+   
+            <xs:element name="StudentRequest">
+            </xs:element>
+            <xs:element name="StudentRequest">
+            </xs:element>
+
+            <xs:element name="CourseRequest">
+            </xs:element>
             <xs:element name="CourseRequest">
             </xs:element>
 
-            <xs:element name="StudentRequest">
-            </xs:element>
-            <xs:element name="StudentRequest">
-            </xs:element>
-            
             <xs:element name="StudentsGetRequest">
             </xs:element>
             <xs:element name="StudentSpecificGetRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="1" maxOccurs="1" name="studentId" type="xs:integer"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CourseSpecificGetRequest">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="1" maxOccurs="1" name="studentId" type="xs:integer"/>
@@ -46,13 +56,6 @@
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element minOccurs="1" maxOccurs="1" name="studentId" type="xs:integer"/>
-                        <xs:element minOccurs="1" maxOccurs="1" name="courseId" type="xs:integer"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="CourseAddRequest">
-                <xs:complexType>
-                    <xs:sequence>
                         <xs:element minOccurs="1" maxOccurs="1" name="courseId" type="xs:integer"/>
                     </xs:sequence>
                 </xs:complexType>
@@ -89,6 +92,13 @@
     <wsdl:message name="StudentSpecificGetResponse">
         <wsdl:part name="parameters" element="tns:Student"/>
     </wsdl:message>
+<wsdl:message name="CourseSpecificGetRequest">
+        <wsdl:part name="parameters" element="tns:CourseSpecificGetRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CourseSpecificGetResponse">
+        <wsdl:part name="parameters" element="tns:Course"/>
+    </wsdl:message>
+
     <wsdl:message name="StudentsGetRequest">
         <wsdl:part name="parameters" element="tns:StudentsGetRequest"/>
     </wsdl:message>
@@ -104,25 +114,6 @@
 
     <wsdl:message name="CoursesAddRequest">
         <wsdl:part name="parameters" element="tns:CoursesAddRequest"/>
-    </wsdl:message>
-
-    <wsdl:message name="CourseRequest">
-        <wsdl:part name="parameters" element="tns:CourseRequest"/>
-    </wsdl:message>
-    <wsdl:message name="CourseResponse">
-        <wsdl:part name="parameters" element="tns:CourseArray"/>
-    </wsdl:message>
-
-    <wsdl:message name="CourseAddRequest">
-        <wsdl:part name="parameters" element="tns:CourseAddRequest"/>
-    </wsdl:message>
-
-    <wsdl:message name="CourseAddRequest">
-        <wsdl:part name="parameters" element="tns:CourseAddRequest"/>
-    </wsdl:message>
-
-     <wsdl:message name="CourseAddResponse">
-        <wsdl:part name="parameters" element="tns:CourseAddResponse"/>
     </wsdl:message>
 
     <wsdl:message name="StudentRequest">
@@ -144,15 +135,35 @@
         <wsdl:part name="parameters" element="tns:StudentAddResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="CourseRequest">
+        <wsdl:part name="parameters" element="tns:CourseRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CourseResponse">
+        <wsdl:part name="parameters" element="tns:CourseArray"/>
+    </wsdl:message>
+
+    <wsdl:message name="CourseAddRequest">
+        <wsdl:part name="parameters" element="tns:CourseAddRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="CourseAddRequest">
+        <wsdl:part name="parameters" element="tns:CourseAddRequest"/>
+    </wsdl:message>
+
+     <wsdl:message name="CourseAddResponse">
+        <wsdl:part name="parameters" element="tns:CourseAddResponse"/>
+    </wsdl:message>
+
     <wsdl:message name="CoursesAddResponse">
         <wsdl:part name="parameters" element="tns:AddResp"/>
     </wsdl:message>
 
-    <wsdl:message name="CourseAddResponse">
+
+    <wsdl:message name="StudentAddResponse">
         <wsdl:part name="parameters" element="tns:AddResp"/>
     </wsdl:message>
 
-    <wsdl:message name="StudentAddResponse">
+    <wsdl:message name="CourseAddResponse">
         <wsdl:part name="parameters" element="tns:AddResp"/>
     </wsdl:message>
 
@@ -174,31 +185,20 @@
             <wsdl:output message="tns:CoursesAddResponse" />
         </wsdl:operation>
 
-        <wsdl:operation name="addCourse">
-            <wsdl:input message="tns:CourseAddRequest" />
-            <wsdl:output message="tns:CourseAddResponse" />
-        </wsdl:operation>
-
         <wsdl:operation name="addStudent">
             <wsdl:input message="tns:StudentAddRequest" />
             <wsdl:output message="tns:StudentAddResponse" />
+        </wsdl:operation>
+
+        <wsdl:operation name="addCourse">
+            <wsdl:input message="tns:CourseAddRequest" />
+            <wsdl:output message="tns:CourseAddResponse" />
         </wsdl:operation>
     </wsdl:portType>
 
     <wsdl:binding name="CommunicatorBinding" type="tns:CommunicatorPort">
         <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
         
-        <wsdl:operation name="addCourse">
-            <soap:operation soapAction="addCourse" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
-            </wsdl:output>
-        </wsdl:operation>
-
-    
         <wsdl:operation name="getCourses">
             <soap:operation soapAction="getCourses" style="document"/>
             <wsdl:input>
@@ -209,8 +209,8 @@
             </wsdl:output>
         </wsdl:operation>
 
-        <wsdl:operation name="addCourse">
-            <soap:operation soapAction="addCourse" style="document"/>
+        <wsdl:operation name="addStudent">
+            <soap:operation soapAction="addStudent" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -219,8 +219,8 @@
             </wsdl:output>
         </wsdl:operation>
 
-        <wsdl:operation name="addStudent">
-            <soap:operation soapAction="addStudent" style="document"/>
+        <wsdl:operation name="addCourse">
+            <soap:operation soapAction="addCourse" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
