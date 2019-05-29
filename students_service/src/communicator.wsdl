@@ -9,6 +9,12 @@
             </xs:element>
             <xs:element name="CourseRequest">
             </xs:element>
+
+            <xs:element name="StudentRequest">
+            </xs:element>
+            <xs:element name="StudentRequest">
+            </xs:element>
+            
             <xs:element name="StudentsGetRequest">
             </xs:element>
             <xs:element name="StudentSpecificGetRequest">
@@ -119,11 +125,34 @@
         <wsdl:part name="parameters" element="tns:CourseAddResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="StudentRequest">
+        <wsdl:part name="parameters" element="tns:StudentRequest"/>
+    </wsdl:message>
+    <wsdl:message name="StudentResponse">
+        <wsdl:part name="parameters" element="tns:StudentArray"/>
+    </wsdl:message>
+
+    <wsdl:message name="StudentAddRequest">
+        <wsdl:part name="parameters" element="tns:StudentAddRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="StudentAddRequest">
+        <wsdl:part name="parameters" element="tns:StudentAddRequest"/>
+    </wsdl:message>
+
+     <wsdl:message name="StudentAddResponse">
+        <wsdl:part name="parameters" element="tns:StudentAddResponse"/>
+    </wsdl:message>
+
     <wsdl:message name="CoursesAddResponse">
         <wsdl:part name="parameters" element="tns:AddResp"/>
     </wsdl:message>
 
     <wsdl:message name="CourseAddResponse">
+        <wsdl:part name="parameters" element="tns:AddResp"/>
+    </wsdl:message>
+
+    <wsdl:message name="StudentAddResponse">
         <wsdl:part name="parameters" element="tns:AddResp"/>
     </wsdl:message>
 
@@ -169,16 +198,7 @@
             </wsdl:output>
         </wsdl:operation>
 
-        <wsdl:operation name="addStudent">
-            <soap:operation soapAction="addStudent" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
-            </wsdl:output>
-        </wsdl:operation>
-
+    
         <wsdl:operation name="getCourses">
             <soap:operation soapAction="getCourses" style="document"/>
             <wsdl:input>

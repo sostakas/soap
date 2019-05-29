@@ -56,7 +56,7 @@ function soapRouter(app) {
 
                 addCourse: function(args, cb) {
                     const { courseId, name, price } = args;
-                    return commWrapper.addCourse(courseId, name, price)
+                    return commWrapper.addCourse2(courseId, 1)
                     .then(() => {
                         cb({result: `course ${courseId}successfully` })
                     })
@@ -72,8 +72,8 @@ function soapRouter(app) {
                 },
 
                 addStudent: function(args, cb) {
-                    const { courseId, name, price } = args;
-                    return commWrapper.addStudent(studentId)
+                    const { courseId, studentId } = args;
+                    return commWrapper.addStudent(studentId, 1)
                     .then(() => {
                         cb({result: `student ${studentId}successfully` })
                     })

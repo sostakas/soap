@@ -8,17 +8,33 @@ class CommunicateWrapper {
     getCourses() {
         return communicator.getCourses();
     }
-    addCourse(courseId, name, price) {
-        return Promise.try(async function() {
 
-            let key = dataStorage.set(null, req.body);
+    addCourse(courseId, studentId) {
+        return Promise.try(async function() {
+            console.log('inside try')
+            const student = dataStorage.get(studentId);
+            if (!student) throw new Error(`student ${studentId} does not exist!`);
+    
+            const course = await communicator.getCourse(courseId);
+            if (!course) throw new Error("Invalid course");
+    
+            
+            dataStorage.update(studentId, {
+                courses: [course]
+            });
+            return null;
         })
     } 
 
-    addStudent(studentId) {
+    addCourse2(courseId, studentId) {
         return Promise.try(async function() {
+            // add to courses
+        })
+    } 
 
-            let key = dataStorage.set(null, req.body);
+    addStudent(courseId, studentId) {
+        return Promise.try(async function() {
+            // add to students
         })
     } 
     getStudents() {
