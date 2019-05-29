@@ -10,8 +10,6 @@ const app = express();
 
 if (process.env.NODE_ENV === "dev") {
 	app.disable("view cache");
-} else {
-	console.log("PRODUCTION ENVIRONMENT");
 }
 
 app.use(express.json());
