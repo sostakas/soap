@@ -42,7 +42,7 @@ router.post("/students", dataValidator, function(req, res, next) {
 	let key = dataStorage.set(null, req.body);
 
 	let json = {};
-	json[key] = { balance: req.body.balance, first_name: req.body.first_name };
+	json[key] = { first_name: req.body.first_name, last_name: req.body.last_name, university: req.body.university };
 	res.status(201).json(json);
 });
 

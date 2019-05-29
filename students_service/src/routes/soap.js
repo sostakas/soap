@@ -52,7 +52,24 @@ function soapRouter(app) {
                 getStudent: function(args, cb) {
                     const {studentId} = args
                     return commWrapper.getStudent(studentId);
-                }
+                },
+
+                addCourse: function(args, cb) {
+                    const { courseId, name, price } = args;
+                    return commWrapper.addCourse(courseId, name, price)
+                    .then(() => {
+                        cb({result: `student ${courseId}successfully` })
+                    })
+                    .catch(function(err) {
+                        console.dir(err);
+                        if (err.message.includes("ECONNREFUSED") || err.message.includes("ENOTFOUND")) {
+                            throw new Error('Shop service is down!');
+                        } else {
+                            console.error(err);
+                            throw new Error(err.message);
+                        }
+                    });
+                },
 			}
 		}
 	};
