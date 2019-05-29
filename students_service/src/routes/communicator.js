@@ -10,7 +10,6 @@ router.get("/courses", function(req, res, next) {
 		return commWrapper.getCourses()
 	})
     .then(function(courses) {
-        console.log("sending succ resp");
         res.json(courses);
     })
     .catch(function(e) {
@@ -40,7 +39,7 @@ router.post("/course", bodyValidator, function(req, res, next) {
 	Promise.try(async function() {
         await commWrapper.getCourses(courseId, studentId)
 		res.json({
-			message: `student ${studentId} bought course ${courseId} successfully`
+			message: `student ${studentId} added course ${courseId} successfully`
 		});
 	}).catch(function(e) {
 		next(e);

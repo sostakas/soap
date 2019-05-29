@@ -9,7 +9,6 @@ const path = require('path')
 const app = express();
 
 if (process.env.NODE_ENV === "dev") {
-	console.log("DEVELOPMENT ENVIRONMENT");
 	app.disable("view cache");
 } else {
 	console.log("PRODUCTION ENVIRONMENT");

@@ -12,6 +12,15 @@ wsdl: {url}/wsdlfile
    </soapenv:Body>
 </soapenv:Envelope>
 ```
+**all students**
+```
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header/>
+   <soapenv:Body>
+   	<StudentsGetRequest></StudentsGetRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
+```
 
 **add course to student**
 ```

@@ -3,7 +3,6 @@ const Promise = require("bluebird");
 
 class Communicator {
 	getCourses() {
-		console.log("getCourses()");
 		return Promise.try(() => {
 			return req({
 				uri: "http://courses:3001/shop",
@@ -11,7 +10,6 @@ class Communicator {
 			});
 		})
 			.then(body => {
-				console.log("received resp");
 				console.dir(body);
 				if (body.error) throw new Error(body.message);
 				return body;
@@ -22,7 +20,6 @@ class Communicator {
 	}
 
 	getCourse(id) {
-		console.log("getCourse()");
 		return Promise.try(() => {
 			return req({
 				uri: `http://courses:3001/shop/${id}`,
@@ -30,7 +27,6 @@ class Communicator {
 			});
 		})
 			.then(body => {
-				console.log("received resp");
 				console.dir(body);
 				if (body.error) throw new Error(body.message);
 				return body;
@@ -41,7 +37,6 @@ class Communicator {
 	}
 
 	addCourse(id) {
-		console.log("addCourse()");
 		return Promise.try(() => {
 			return req({
 				uri: `http://courses:3001/shop/${id}`,
@@ -49,7 +44,6 @@ class Communicator {
 			});
 		})
 			.then(async body => {
-				console.log("received resp");
 				console.dir(body);
 				if (body.error) throw new Error(body.message);
 				await req({
@@ -57,7 +51,6 @@ class Communicator {
 					uri: `http://courses:3001/shop/${id}`,
 					json: true
                 });
-                console.log('body return')
 				return body;
 			})
 			.catch(function(resp) {

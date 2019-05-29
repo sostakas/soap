@@ -7,7 +7,7 @@ const data = {
 };
 
 function studentPropExistValidator(student) {
-	if (!student.first_name) throw new Error("first_name argument is missing!");
+	if (!student.first_name) throw new Error("first_name is missing!");
 	if (!student.last_name) throw new Error("last_name is missing!");
 }
 function studentPropTypeValidator(student) {
@@ -34,18 +34,15 @@ function getAll() {
 function update(key, newInfo) {
 	if (!data[key]) throw new Error("student does not exist!");
 	const student = data[key];
-	console.log("update()");
 	const objArrayElements = {};
 	for (let iterKey in newInfo) {
 		console.log("key: " + iterKey);
 		const newInfoProp = newInfo[iterKey];
 		const oldInfoProp = student[iterKey];
-		console.log("oldinfoprop");
 		console.dir(oldInfoProp);
 		if (_.isArray(newInfoProp)) objArrayElements[iterKey] = [...newInfo[iterKey], ...oldInfoProp];
 	}
 
-	console.log("obj array elements");
 	console.dir(objArrayElements);
 	const newStudent = { ...data[key], ...newInfo, ...objArrayElements };
 	data[key] = newStudent;

@@ -34,7 +34,7 @@ function soapRouter(app) {
                     const { courseId, studentId } = args;
                     return commWrapper.addCourse(courseId, studentId)
                     .then(() => {
-                        cb({result: `student ${studentId} bought course ${courseId} successfully` })
+                        cb({result: `student ${studentId} added course ${courseId} successfully` })
                     })
                     .catch(function(err) {
                         console.dir(err);

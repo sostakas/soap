@@ -15,16 +15,12 @@ class CommunicateWrapper {
             if (!student) throw new Error(`student ${studentId} does not exist!`);
     
             const course = await communicator.getCourse(courseId);
-            if (!course) throw new Error("Invalid course");
+            if (!course) throw new Error("invalid course");
     
-            if (student.balance <= course.price) throw new Error("student does not have enough balance.");
-            console.log('asdasd')
             const boughtCourse = await communicator.addCourse(courseId);
-            console.log('after bought course')
             dataStorage.update(studentId, {
                 courses: [boughtCourse]
             });
-            console.log('returning')
             return null;
         })
     } 
@@ -42,7 +38,6 @@ class CommunicateWrapper {
                 return studentsLogic.attachCoursesToStudent(student);
             });
         }).then(function(studentsWithCourses) {
-            console.log("got all students with courses");
             console.dir(studentsWithCourses);
             return studentsWithCourses
         })
@@ -53,6 +48,5 @@ class CommunicateWrapper {
         return kStudents[studentId];
     }
 }
-
 
 module.exports = new CommunicateWrapper();

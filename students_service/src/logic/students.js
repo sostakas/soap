@@ -14,13 +14,10 @@ function attachCoursesToStudent(student) {
 		});
 	})
 		.then(body => {
-			console.log("received resp");
 			console.dir(body);
 			if (body.error) {
-				console.log("body error detected");
 				throw new Error(body.message);
 			}
-			console.log("received courses resp: ");
 			console.dir(body);
 			student.courses = body;
 			return student;
